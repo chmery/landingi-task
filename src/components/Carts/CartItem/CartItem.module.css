@@ -1,0 +1,18 @@
+.item h4 {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.item {
+    cursor: pointer;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.125rem;
+}
+
+.info span {
+    color: var(--light-font);
+}

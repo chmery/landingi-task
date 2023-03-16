@@ -1,0 +1,8 @@
+.app {
+    display: flex;
+}
+
+.outlet {
+    margin-top: 3rem;
+    margin-left: 3rem;
+}

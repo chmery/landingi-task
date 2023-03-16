@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Carts from "./components/Carts/Carts";
 
 const router = createBrowserRouter([
     {
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "carts",
-                element: <div>carts</div>,
+                element: <Carts />,
             },
         ],
     },

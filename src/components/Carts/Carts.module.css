@@ -1,0 +1,17 @@
+.heading {
+    margin-bottom: 2rem;
+}
+
+.heading p {
+    margin-top: 1rem;
+    color: var(--light-font);
+}
+
+.carts-list {
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    overflow-x: auto;
+    max-height: 80vh;
+}
