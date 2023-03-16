@@ -1,15 +1,18 @@
+import { Link, useLocation } from "react-router-dom";
 import styles from "./Navigation.module.css";
 
 const Navigation = () => {
+    const { pathname } = useLocation();
+
     return (
         <nav className={styles.navigation}>
             <div className={styles.item}>
-                <span>All Carts</span>
-                <div className={styles["active-bar"]} />
+                <Link to={"carts"}>All Carts</Link>
+                {pathname === "/carts" && <div className={styles["active-bar"]} />}
             </div>
             <div className={styles.item}>
-                <span>Create New Cart</span>
-                <div className={styles["active-bar"]} />
+                <Link to={"creator"}>Create New Cart</Link>
+                {pathname === "/creator" && <div className={styles["active-bar"]} />}
             </div>
         </nav>
     );

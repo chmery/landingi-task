@@ -13,12 +13,12 @@
     font-weight: 600;
 }
 
-.item > span {
+.item > a {
     cursor: pointer;
     transition: opacity 0.1s;
 }
 
-.item > span:hover {
+.item > a:hover {
     opacity: 0.5;
 }
 

@@ -1,5 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
 
+:root {
+    --blue: #5076ff;
+    --red: #ff5050;
+    --green: #2ce88e;
+    --dark-font: #1d1d1d;
+    --light-font: #aaaaaa;
+    --border: #e6e6e6;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -8,11 +17,6 @@
     color: var(--dark-font);
 }
 
-:root {
-    --blue: #5076ff;
-    --red: #ff5050;
-    --green: #2ce88e;
-    --dark-font: #1d1d1d;
-    --light-font: #aaaaaa;
-    --border: #e6e6e6;
+a {
+    text-decoration: none;
 }
