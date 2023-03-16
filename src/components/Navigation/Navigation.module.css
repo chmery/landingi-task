@@ -1,0 +1,30 @@
+.navigation {
+    height: 100vh;
+    width: 15rem;
+    border-right: 1px solid var(--border);
+    padding: 3rem 0rem 0rem 3rem;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+    font-weight: 600;
+}
+
+.item > span {
+    cursor: pointer;
+    transition: opacity 0.1s;
+}
+
+.item > span:hover {
+    opacity: 0.5;
+}
+
+.active-bar {
+    background: var(--blue);
+    border-radius: 3rem 0rem 0rem 3rem;
+    width: 8px;
+    height: 100%;
+}
