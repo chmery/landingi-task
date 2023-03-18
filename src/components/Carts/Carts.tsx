@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
+import Heading from "../Heading/Heading";
 import CartItem from "./CartItem/CartItem";
 import styles from "./Carts.module.css";
 
@@ -17,12 +19,15 @@ const Carts = () => {
 
     return (
         <div className={styles.carts}>
-            <div className={styles.heading}>
-                <h3>All Carts</h3>
-                <p>Click on the cart to see its details</p>
+            <div>
+                <Heading title="All carts" text="Click on the cart to see its details." />
+                <div className={styles["carts-list"]}>
+                    {cartsData &&
+                        cartsData.carts.map((cart) => <CartItem cartData={cart} key={cart.id} />)}
+                </div>
             </div>
-            <div className={styles["carts-list"]}>
-                {cartsData && cartsData.carts.map((cart) => <CartItem cartData={cart} />)}
+            <div className={styles.outlet}>
+                <Outlet />
             </div>
         </div>
     );

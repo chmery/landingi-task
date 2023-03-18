@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./CartItem.module.css";
 
 type Props = {
@@ -6,17 +7,17 @@ type Props = {
 
 const CartItem = ({ cartData }: Props) => {
     return (
-        <div className={styles.item}>
+        <Link to={`cart-details/${cartData.id}`} className={styles.item}>
             <h4>Cart {cartData.id}</h4>
             <div className={styles.info}>
-                <span>Total products:</span>
+                <span>Products:</span>
                 <span>{cartData.totalProducts}</span>
             </div>
             <div className={styles.info}>
-                <span>Total value:</span>
+                <span>Value:</span>
                 <span>{cartData.total}</span>
             </div>
-        </div>
+        </Link>
     );
 };
 

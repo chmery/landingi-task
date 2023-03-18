@@ -3,16 +3,17 @@ import styles from "./Navigation.module.css";
 
 const Navigation = () => {
     const { pathname } = useLocation();
+    const parentPath = pathname.split("/")[1];
 
     return (
         <nav className={styles.navigation}>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${parentPath === "carts" ? styles.active : ""}`}>
                 <Link to={"carts"}>All Carts</Link>
-                {pathname === "/carts" && <div className={styles["active-bar"]} />}
+                {parentPath === "carts" && <div className={styles["active-bar"]} />}
             </div>
-            <div className={styles.item}>
+            <div className={`${styles.item} ${parentPath === "creator" ? styles.active : ""}`}>
                 <Link to={"creator"}>Create New Cart</Link>
-                {pathname === "/creator" && <div className={styles["active-bar"]} />}
+                {parentPath === "creator" && <div className={styles["active-bar"]} />}
             </div>
         </nav>
     );

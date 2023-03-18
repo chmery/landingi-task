@@ -28,3 +28,7 @@
     width: 8px;
     height: 100%;
 }
+
+.active a {
+    color: var(--blue);
+}
