@@ -51,7 +51,7 @@ const Chart = ({ productsData }: Props) => {
     };
 
     return (
-        <div style={{ width: "35rem" }}>
+        <div style={{ width: "35rem" }} data-testid="chart">
             <Line data={data} options={options} />
         </div>
     );
