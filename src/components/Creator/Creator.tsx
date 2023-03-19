@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import useModal from "../../hooks/useModal";
 import { AddedProducts, ProductsToAdd, ProductToAddData } from "../../types/Creator";
 import { getRandomNum } from "../../utils/getRandomNum";
@@ -7,7 +8,18 @@ import Modal from "../Modal/Modal";
 import styles from "./Creator.module.css";
 import ProductItem from "./ProductItem/ProductItem";
 
+export const getProductsToAdd = async () => {
+    const res = await fetch("https://dummyjson.com/products?limit=10");
+    if (!res.ok) throw new Error();
+    const data: ProductsToAdd = await res.json();
+    return data.products;
+};
+
 const Creator = () => {
+    const productsToAdd = useLoaderData() as ProductToAddData[];
+    const [addedProducts, setAddedProducts] = useState<AddedProducts | []>([]);
+    const [itemsListKey, setItemsListKey] = useState(getRandomNum());
+
     const {
         isErrorModalOpen,
         isSuccesModalOpen,
@@ -16,19 +28,6 @@ const Creator = () => {
         setIsSuccesModalOpen,
         setIsClosing,
     } = useModal();
-
-    const [productsToAdd, setProductsToAdd] = useState<ProductToAddData[] | null>(null);
-    const [addedProducts, setAddedProducts] = useState<AddedProducts | []>([]);
-    const [itemsListKey, setItemsListKey] = useState(getRandomNum());
-
-    useEffect(() => {
-        const getProductsToAdd = async () => {
-            const res = await fetch("https://dummyjson.com/products?limit=10");
-            const productsToAdd: ProductsToAdd = await res.json();
-            setProductsToAdd(productsToAdd.products);
-        };
-        getProductsToAdd();
-    }, []);
 
     const addProductHandler = (id: number, quantity: number) => {
         const addedProductIndex = addedProducts.findIndex((product) => product.id === id);

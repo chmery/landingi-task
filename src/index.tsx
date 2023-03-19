@@ -5,7 +5,7 @@ import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Carts, { getCartsData } from "./components/Carts/Carts";
 import CartDetails, { getCartDetails } from "./components/Carts/CartDetails/CartDetails";
-import Creator from "./components/Creator/Creator";
+import Creator, { getProductsToAdd } from "./components/Creator/Creator";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
@@ -17,6 +17,7 @@ const router = createBrowserRouter([
             {
                 path: "creator",
                 element: <Creator />,
+                loader: () => getProductsToAdd(),
             },
             {
                 path: "carts",
