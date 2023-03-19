@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+import { CartsData } from "../../types/Carts";
 import Heading from "../Heading/Heading";
 import CartItem from "./CartItem/CartItem";
 import styles from "./Carts.module.css";

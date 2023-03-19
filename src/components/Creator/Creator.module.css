@@ -1,0 +1,26 @@
+.products-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    overflow-y: auto;
+    padding-right: 1rem;
+    max-height: 70vh;
+}
+
+.create-btn {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #fff;
+    background: var(--blue);
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+}
+
+.create-btn:disabled {
+    background: var(--border);
+    cursor: not-allowed;
+}

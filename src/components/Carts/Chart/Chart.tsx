@@ -9,6 +9,7 @@ import {
     CategoryScale,
     ChartOptions,
 } from "chart.js";
+import { ProductData } from "../../../types/Carts";
 
 type Props = {
     productsData: ProductData[];

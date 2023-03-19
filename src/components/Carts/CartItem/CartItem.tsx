@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { CartData } from "../../../types/Carts";
 import styles from "./CartItem.module.css";
 
 type Props = {

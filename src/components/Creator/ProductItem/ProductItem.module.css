@@ -1,0 +1,59 @@
+.product-item {
+    display: flex;
+    align-items: center;
+}
+
+.product-item img {
+    height: 5rem;
+    width: 5rem;
+    object-fit: cover;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+}
+
+.title {
+    color: var(--light-font);
+}
+
+.price {
+    font-weight: 500;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.buttons span {
+    font-weight: 500;
+    width: 3rem;
+    text-align: center;
+}
+
+.add-btn,
+.remove-btn {
+    border-radius: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.add-btn svg,
+.remove-btn svg {
+    width: 18px;
+    stroke: #fff;
+    stroke-width: 3px;
+}
+
+.add-btn {
+    background-color: var(--blue);
+}
+
+.remove-btn {
+    background-color: var(--red);
+}
