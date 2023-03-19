@@ -1,22 +1,17 @@
-import { useEffect, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLoaderData } from "react-router-dom";
 import { CartsData } from "../../types/Carts";
 import Heading from "../Heading/Heading";
 import CartItem from "./CartItem/CartItem";
 import styles from "./Carts.module.css";
 
+export const getCartsData = async () => {
+    const res = await fetch("https://dummyjson.com/carts");
+    if (!res.ok) throw new Error();
+    return res.json();
+};
+
 const Carts = () => {
-    const [cartsData, setCartsData] = useState<CartsData | null>(null);
-
-    useEffect(() => {
-        const getCartsData = async () => {
-            const res = await fetch("https://dummyjson.com/carts");
-            const cartsData: CartsData = await res.json();
-
-            setCartsData(cartsData);
-        };
-        getCartsData();
-    }, []);
+    const cartsData = useLoaderData() as CartsData;
 
     return (
         <div className={styles.carts}>

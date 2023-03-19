@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Carts from "./components/Carts/Carts";
-import CartDetails from "./components/Carts/CartDetails/CartDetails";
+import Carts, { getCartsData } from "./components/Carts/Carts";
+import CartDetails, { getCartDetails } from "./components/Carts/CartDetails/CartDetails";
 import Creator from "./components/Creator/Creator";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 
@@ -21,10 +21,12 @@ const router = createBrowserRouter([
             {
                 path: "carts",
                 element: <Carts />,
+                loader: () => getCartsData(),
                 children: [
                     {
                         path: "cart-details/:cartId",
                         element: <CartDetails />,
+                        loader: ({ params }) => getCartDetails(params),
                     },
                 ],
             },
