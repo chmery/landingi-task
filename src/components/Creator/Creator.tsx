@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useModal from "../../hooks/useModal";
 import { AddedProducts, ProductsToAdd, ProductToAddData } from "../../types/Creator";
+import { getRandomNum } from "../../utils/getRandomNum";
 import Heading from "../Heading/Heading";
 import Modal from "../Modal/Modal";
 import styles from "./Creator.module.css";
@@ -18,6 +19,7 @@ const Creator = () => {
 
     const [productsToAdd, setProductsToAdd] = useState<ProductToAddData[] | null>(null);
     const [addedProducts, setAddedProducts] = useState<AddedProducts | []>([]);
+    const [itemsListKey, setItemsListKey] = useState(getRandomNum());
 
     useEffect(() => {
         const getProductsToAdd = async () => {
@@ -52,6 +54,11 @@ const Creator = () => {
         setAddedProducts(updatedAddedProducts);
     };
 
+    const resetCreatorState = () => {
+        setAddedProducts([]);
+        setItemsListKey(getRandomNum());
+    };
+
     const createCartHandler = async () => {
         const res = await fetch("https://dummyjson.com/carts/add", {
             method: "POST",
@@ -63,6 +70,7 @@ const Creator = () => {
         });
 
         res.ok ? setIsSuccesModalOpen(true) : setIsErrorModalOpen(true);
+        resetCreatorState();
     };
 
     return (
@@ -88,7 +96,7 @@ const Creator = () => {
             <Heading title="Cart creator" text="Create a new cart by adding items to it." />
             {productsToAdd && (
                 <>
-                    <div className={styles["products-list"]}>
+                    <div className={styles["products-list"]} key={itemsListKey}>
                         {productsToAdd.map((product) => (
                             <ProductItem
                                 productData={product}
