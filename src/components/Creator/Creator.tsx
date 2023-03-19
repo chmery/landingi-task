@@ -1,23 +1,31 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import useModal from "../../hooks/useModal";
 import { AddedProducts, ProductsToAdd, ProductToAddData } from "../../types/Creator";
 import Heading from "../Heading/Heading";
+import Modal from "../Modal/Modal";
 import styles from "./Creator.module.css";
 import ProductItem from "./ProductItem/ProductItem";
 
 const Creator = () => {
-    const navigate = useNavigate();
+    const {
+        isErrorModalOpen,
+        isSuccesModalOpen,
+        isClosing,
+        setIsErrorModalOpen,
+        setIsSuccesModalOpen,
+        setIsClosing,
+    } = useModal();
 
     const [productsToAdd, setProductsToAdd] = useState<ProductToAddData[] | null>(null);
     const [addedProducts, setAddedProducts] = useState<AddedProducts | []>([]);
 
     useEffect(() => {
-        const getproductsToAdd = async () => {
+        const getProductsToAdd = async () => {
             const res = await fetch("https://dummyjson.com/products?limit=10");
             const productsToAdd: ProductsToAdd = await res.json();
             setProductsToAdd(productsToAdd.products);
         };
-        getproductsToAdd();
+        getProductsToAdd();
     }, []);
 
     const addProductHandler = (id: number, quantity: number) => {
@@ -54,14 +62,29 @@ const Creator = () => {
             }),
         });
 
-        if (res.ok) {
-            console.log("succes!");
-            navigate("/");
-        }
+        res.ok ? setIsSuccesModalOpen(true) : setIsErrorModalOpen(true);
     };
 
     return (
         <div className={styles.creator}>
+            {isSuccesModalOpen && (
+                <Modal
+                    setIsClosing={setIsClosing}
+                    isClosing={isClosing}
+                    title="Succes!"
+                    text="Cart has been successfully created."
+                    type="succes"
+                />
+            )}
+            {isErrorModalOpen && (
+                <Modal
+                    setIsClosing={setIsClosing}
+                    isClosing={isClosing}
+                    title="Error!"
+                    text="The shopping cart could not be created"
+                    type="error"
+                />
+            )}
             <Heading title="Cart creator" text="Create a new cart by adding items to it." />
             {productsToAdd && (
                 <>
