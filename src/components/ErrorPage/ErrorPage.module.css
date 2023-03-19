@@ -1,0 +1,27 @@
+.error-page {
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -48%);
+    text-align: center;
+}
+
+.error-page h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.error-page p {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.error-page button {
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    background: var(--blue);
+    padding: 1rem 4rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+}

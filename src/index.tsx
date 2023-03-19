@@ -6,11 +6,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Carts from "./components/Carts/Carts";
 import CartDetails from "./components/Carts/CartDetails/CartDetails";
 import Creator from "./components/Creator/Creator";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: "creator",
