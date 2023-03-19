@@ -32,11 +32,19 @@ const ProductItem = ({ productData, onAdd, onRemove }: Props) => {
                 <span className={styles.price}>{`${productData.price}$`}</span>
             </div>
             <div className={styles.buttons}>
-                <button className={styles["add-btn"]} onClick={addProductHandler}>
+                <button
+                    className={styles["add-btn"]}
+                    onClick={addProductHandler}
+                    data-testid={`add${productData.id}`}
+                >
                     <PlusIcon />
                 </button>
                 <span>{quantity}</span>
-                <button className={styles["remove-btn"]} onClick={removeProductHandler}>
+                <button
+                    className={styles["remove-btn"]}
+                    onClick={removeProductHandler}
+                    data-testid={`remove${productData.id}`}
+                >
                     <MinusIcon />
                 </button>
             </div>
