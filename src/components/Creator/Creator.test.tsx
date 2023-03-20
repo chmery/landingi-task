@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import Creator from "./Creator";
@@ -60,13 +60,13 @@ describe("Creator component", () => {
         render(<MockCreator />);
 
         const addBtn = await screen.findByTestId("add2");
-
-        userEvent.click(addBtn);
-        userEvent.click(addBtn);
+        act(() => {
+            userEvent.click(addBtn);
+            userEvent.click(addBtn);
+        });
 
         const removeBtn = await screen.findByTestId("remove2");
-
-        userEvent.click(removeBtn);
+        act(() => userEvent.click(removeBtn));
 
         const productQuantity = await screen.findByText("1");
         expect(productQuantity).toBeVisible();
@@ -77,10 +77,10 @@ describe("Creator component", () => {
         render(<MockCreator />);
 
         const addBtn = await screen.findByTestId("add2");
-        userEvent.click(addBtn);
+        act(() => userEvent.click(addBtn));
 
         const createBtn = await screen.findByText("Create");
-        userEvent.click(createBtn);
+        act(() => userEvent.click(createBtn));
 
         const succesModal = await screen.findByText("Succes!");
         expect(succesModal).toBeVisible();
@@ -91,10 +91,10 @@ describe("Creator component", () => {
         render(<MockCreator />);
 
         const addBtn = await screen.findByTestId("add2");
-        userEvent.click(addBtn);
+        act(() => userEvent.click(addBtn));
 
         const createBtn = await screen.findByText("Create");
-        userEvent.click(createBtn);
+        act(() => userEvent.click(createBtn));
 
         const errorModal = await screen.findByText("Error!");
         expect(errorModal).toBeVisible();
