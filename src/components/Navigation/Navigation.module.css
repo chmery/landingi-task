@@ -1,34 +1,85 @@
 .navigation {
     height: 100vh;
-    width: 15rem;
+    width: auto;
     border-right: 1px solid var(--border);
-    padding: 3rem 0rem 0rem 3rem;
+    padding: 3rem 0rem;
 }
 
 .item {
+    width: 15rem;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     height: 3rem;
     font-weight: 600;
+    margin-left: 3rem;
 }
 
-.item > a {
+.link {
+    display: flex;
+    column-gap: 1rem;
+    align-items: center;
     cursor: pointer;
     transition: opacity 0.1s;
 }
 
-.item > a:hover {
+.text {
+    color: var(--light-font);
+}
+
+.link svg {
+    stroke: var(--light-font);
+}
+
+.link:hover {
     opacity: 0.5;
 }
 
 .active-bar {
+    margin-left: auto;
     background: var(--blue);
     border-radius: 3rem 0rem 0rem 3rem;
     width: 8px;
     height: 100%;
 }
 
-.active a {
+.active span {
     color: var(--blue);
+}
+
+.active svg {
+    stroke: var(--blue);
+}
+
+@media screen and (max-width: 1120px) {
+    .item {
+        width: auto;
+        height: auto;
+        margin: 0 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .link {
+        border: 1px solid var(--border);
+        justify-content: center;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 1rem;
+    }
+
+    .text {
+        display: none;
+    }
+
+    .active .link {
+        background-color: var(--blue);
+        border: none;
+    }
+
+    .active svg {
+        stroke: #fff;
+    }
+
+    .active-bar {
+        display: none;
+    }
 }
