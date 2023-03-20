@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
-import CartDetails from "./CartDetails";
+import CartItem from "./CartItem";
 
 const MockCartDetails = () => {
     const cartData = {
@@ -10,33 +10,32 @@ const MockCartDetails = () => {
         total: 20,
         discountedTotal: 15,
         products: [],
+        userId: 1,
     };
 
     const routes = [
         {
-            path: "/carts/cart-details/:cartId",
-            element: <CartDetails />,
+            path: "/carts",
+            element: <CartItem cartData={cartData} />,
             loader: () => cartData,
         },
     ];
 
     const router = createMemoryRouter(routes, {
-        initialEntries: ["/carts/cart-details/1"],
+        initialEntries: ["/carts"],
     });
 
     return <RouterProvider router={router} />;
 };
 
 describe("Cart details component", () => {
-    it("should render cart details", async () => {
+    it("should render cart data", async () => {
         render(<MockCartDetails />);
-        const totalProducts = await screen.findByText("10");
-        expect(totalProducts).toBeVisible();
+        expect(await screen.findByText("20")).toBeVisible();
     });
 
-    it("should render chart", async () => {
+    it("should redirect to cart-details url", async () => {
         render(<MockCartDetails />);
-        const chart = await screen.findByTestId("chart");
-        expect(chart).toBeVisible();
+        expect(await screen.findByTestId("link")).toHaveAttribute("href", "/carts/cart-details/1");
     });
 });

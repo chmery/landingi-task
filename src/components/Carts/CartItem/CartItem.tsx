@@ -8,7 +8,7 @@ type Props = {
 
 const CartItem = ({ cartData }: Props) => {
     return (
-        <Link to={`cart-details/${cartData.id}`} className={styles.item}>
+        <Link to={`cart-details/${cartData.id}`} className={styles.item} data-testid="link">
             <h4>Cart {cartData.id}</h4>
             <div className={styles.info}>
                 <span>Products:</span>
