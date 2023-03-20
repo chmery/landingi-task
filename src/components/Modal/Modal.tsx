@@ -10,7 +10,11 @@ type Props = {
 
 const Modal = ({ title, text, type, isClosing, setIsClosing }: Props) => {
     return (
-        <div className={styles.backdrop} onClick={() => setIsClosing(true)}>
+        <div
+            className={styles.backdrop}
+            onClick={() => setIsClosing(true)}
+            data-testid="modal-backdrop"
+        >
             <div className={`${styles.modal} ${isClosing ? styles.exit : ""}`}>
                 <div
                     className={`${styles.accent} ${type === "succes" ? styles.green : styles.red}`}
